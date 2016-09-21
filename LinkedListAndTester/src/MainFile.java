@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class MainFile {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
-        //todo menu
 
         LinkedList<String> mList = new LinkedList<>();
+
         do {
             System.out.print("\n-Menu-\n");
 
@@ -32,33 +32,35 @@ public class MainFile {
                     System.out.print("\nGood Bye!!");
                     System.exit(0);
                     break;
-                case 1:
+                case 1: //size
                     break;
-                case 2:
+                case 2: //print
                     break;
-                case 3:
+                case 3: //print first
                     break;
-                case 4:
+                case 4: //print last
                     break;
-                case 5:
+                case 5: //get location
                     break;
-                case 6:
+                case 6: //remove first
+                    mList.removeFirst();
+                    System.out.println("First node was removed.");
                     break;
-                case 7:
+                case 7: //remove last
                     break;
-                case 8:
+                case 8: //remove x
                     break;
-                case 9:
+                case 9: //add first
                     break;
-                case 10:
+                case 10: //add last
                     break;
-                case 11:
+                case 11: //insert
                     break;
-                case 12:
+                case 12: //set x
                     break;
-                case 13:
+                case 13: //is empty
                     break;
-                case 14:
+                case 14: //clear
                     break;
                 default:
                     System.out.println("Invalid choice.");

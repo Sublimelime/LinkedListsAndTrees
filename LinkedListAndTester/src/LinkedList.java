@@ -7,6 +7,7 @@
  */
 
 public class LinkedList<E> {
+
     private LLNode<E> first, last;
 
     public LinkedList() {
@@ -15,7 +16,9 @@ public class LinkedList<E> {
     }
 
     public LinkedList(E data) {
-        //todo Creates a new node with the given data and then sets the first and last node to it.
+        LLNode<E> newNode = new LLNode<E>(data);
+        first = newNode;
+        last = newNode;
     }
 
     //getters
@@ -35,5 +38,61 @@ public class LinkedList<E> {
         return last;
     }
 
+    //manipulation methods
 
+    
+    public LLNode<E> removeFirst() {
+        LLNode<E> oldFirst = first;
+        first = first.getNext();
+        return oldFirst;
+    }
+
+    public LLNode<E> removeLast() {
+        LLNode<E> oldLast = first;
+        last = null;
+        return oldLast;
+    }
+
+    public void addFirst(E data) {
+
+    }
+    public void addLast(E data) {
+
+    }
+    public void clear() {
+        first = null;
+        first = null;
+    }
+    public int size() {
+        /*int finalSize = 0;
+
+        while () {
+            finalSize++;
+        }
+
+        return finalSize;*/
+        return 0;
+    }
+    public boolean empty() {
+        return false;
+    }
+    public E get(int x) {
+        return null;
+    }
+    public E remove(int x) {
+        return null;
+    }
+    public void add(int x, E data) {
+    }
+    public E set(int x,E data) {
+        return null;
+    }
+
+    public boolean hasNext() {
+        return (last!=null); //todo i think this is right?
+    }
+
+    public E next() {
+        return null;
+    }
 }
