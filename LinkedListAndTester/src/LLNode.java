@@ -30,4 +30,9 @@ public class LLNode<E> {
     public void setNext(LLNode<E> next) {
         this.next = next;
     }
-}  
+
+    @Override
+    public String toString() {
+        return "Node:{data=" + data + '}';
+    }
+}

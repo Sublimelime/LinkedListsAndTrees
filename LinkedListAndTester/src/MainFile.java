@@ -33,8 +33,10 @@ public class MainFile {
                     System.exit(0);
                     break;
                 case 1: //size
+                    System.out.println("The size of the list is: "+mList.size());
                     break;
                 case 2: //print
+                    System.out.println("Printing...\n"+mList.toString());
                     break;
                 case 3: //print first
                     break;
@@ -47,6 +49,8 @@ public class MainFile {
                     System.out.println("First node was removed.");
                     break;
                 case 7: //remove last
+                    mList.removeLast();
+                    System.out.println("Last node was removed.");
                     break;
                 case 8: //remove x
                     break;
