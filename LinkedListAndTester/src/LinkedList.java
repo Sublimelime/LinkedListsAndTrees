@@ -20,6 +20,7 @@ public class LinkedList<E> {
 
     /**
      * Sets up the link list setting both first and last to a new node.
+     *
      * @param data
      */
     public LinkedList(E data) {
@@ -39,6 +40,7 @@ public class LinkedList<E> {
 
     /**
      * Gets the first node in the list
+     *
      * @return the first node in the list.
      */
     public LLNode<E> getFirstNode() {
@@ -46,7 +48,8 @@ public class LinkedList<E> {
     }
 
     /**
-     *  Gets the last node in the list
+     * Gets the last node in the list
+     *
      * @return returns the last node in the list
      */
     public LLNode<E> getLastNode() {
@@ -78,10 +81,11 @@ public class LinkedList<E> {
     }
 
     public void addFirst(E data) {
-
+        first = new LLNode<>(data);
     }
-    public void addLast(E data) {
 
+    public void addLast(E data) {
+        last=new LLNode<>(data);
     }
 
     /**
@@ -89,7 +93,7 @@ public class LinkedList<E> {
      */
     public void clear() {
         first = null;
-        first = null;
+        last = null;
     }
 
     public int size() {
@@ -102,27 +106,33 @@ public class LinkedList<E> {
         return finalSize;*/
         return 0;
     }
+
     public boolean empty() {
         return false;
     }
+
     public E get(int x) {
         return null;
     }
+
     public E remove(int x) {
         return null;
     }
+
     public void add(int x, E data) {
     }
-    public E set(int x,E data) {
+
+    public E set(int x, E data) {
         return null;
     }
 
     /**
      * Returns if the list has a next node.
+     *
      * @return True if there is a next node, ie last != null
      */
     public boolean hasNext() {
-        return (last!=null); //todo i think this is right?
+        return (last != null); //todo i think this is right?
     }
 
     public E next() {
@@ -131,13 +141,15 @@ public class LinkedList<E> {
 
     @Override
     public String toString() {
-        //todo toString
+        LLNode<E> item = first;
         String finalString = "";
 
-        while (this.hasNext()) {
-
+        while (hasNext()) {
+            if (item != null) {
+                finalString += item.toString() + "\n";
+                item = item.getNext();
+            } else break;
         }
-        
 
         return finalString;
     }

@@ -25,8 +25,7 @@ public class MainFile {
                     "Enter selection:\n");
 
             byte choice = keyboard.nextByte();
-
-            System.out.println();
+            
             switch (choice) {
                 case 0:
                     System.out.print("\nGood Bye!!");
@@ -39,8 +38,10 @@ public class MainFile {
                     System.out.println("Printing...\n"+mList.toString());
                     break;
                 case 3: //print first
+                    System.out.println("Printing...\n"+mList.getFirst());
                     break;
                 case 4: //print last
+                    System.out.println("Printing...\n"+mList.getLast());
                     break;
                 case 5: //get location
                     break;
@@ -65,6 +66,8 @@ public class MainFile {
                 case 13: //is empty
                     break;
                 case 14: //clear
+                    System.out.println("Clearing...");
+                    mList.clear();
                     break;
                 default:
                     System.out.println("Invalid choice.");
