@@ -35,7 +35,7 @@ public class LinkedList<E> {
     }
 
     public E getLast() {
-        return last.getData();
+        return last.getData(); //fixme
     }
 
     /**
@@ -80,12 +80,28 @@ public class LinkedList<E> {
         return oldLast;
     }
 
+    /**
+     * Adds a new node to the list at the first spot, sets the old first to be second to the new node.
+     * @param data data to create a new node with.
+     */
     public void addFirst(E data) {
-        first = new LLNode<>(data);
+        if (first == null) {
+            first = new LLNode<>(data);
+        } else {
+            LLNode<E> temp = new LLNode<>(data);
+            temp.setNext(first);
+            first=temp;
+        }
     }
 
     public void addLast(E data) {
-        last=new LLNode<>(data);
+        if (last == null) {
+            last = new LLNode<>(data);
+        } else {
+            LLNode<E> temp = new LLNode<>(data);
+            temp.setNext(last);
+            last=temp;
+        }
     }
 
     /**
@@ -107,8 +123,13 @@ public class LinkedList<E> {
         return 0;
     }
 
+    /**
+     * Returns the empty status of the list.
+     *
+     * @return True if first and last are null.
+     */
     public boolean empty() {
-        return false;
+        return (first == null && last == null);
     }
 
     public E get(int x) {
@@ -131,9 +152,9 @@ public class LinkedList<E> {
      *
      * @return True if there is a next node, ie last != null
      */
-    public boolean hasNext() {
+    /*public boolean hasNext() {
         return (last != null); //todo i think this is right?
-    }
+    }*/
 
     public E next() {
         return null;
@@ -144,13 +165,10 @@ public class LinkedList<E> {
         LLNode<E> item = first;
         String finalString = "";
 
-        while (hasNext()) {
-            if (item != null) {
-                finalString += item.toString() + "\n";
-                item = item.getNext();
-            } else break;
+        while (item != null) {
+            finalString += item.toString() + "\n";
+            item = item.getNext();
         }
-
         return finalString;
     }
 }

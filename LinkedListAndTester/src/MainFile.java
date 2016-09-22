@@ -25,7 +25,7 @@ public class MainFile {
                     "Enter selection:\n");
 
             byte choice = keyboard.nextByte();
-            
+
             switch (choice) {
                 case 0:
                     System.out.print("\nGood Bye!!");
@@ -56,14 +56,19 @@ public class MainFile {
                 case 8: //remove x
                     break;
                 case 9: //add first
+                    System.out.println("What should be added to first?");
+                    mList.addFirst(keyboard.next());
                     break;
                 case 10: //add last
+                    System.out.println("What should be added to last?");
+                    mList.addLast(keyboard.next());
                     break;
                 case 11: //insert
                     break;
                 case 12: //set x
                     break;
                 case 13: //is empty
+                    System.out.println((mList.empty()) ? "List is" : "List is not" + " empty.");
                     break;
                 case 14: //clear
                     System.out.println("Clearing...");
