@@ -27,7 +27,7 @@ public class MainFile {
             byte choice = keyboard.nextByte();
 
             switch (choice) {
-                case 0:
+                case 0: //exit
                     System.out.print("\nGood Bye!!");
                     System.exit(0);
                     break;
@@ -43,7 +43,7 @@ public class MainFile {
                 case 4: //print last
                     System.out.println("Printing...\n" + mList.getLast());
                     break;
-                case 5: //get location
+                case 5: //get location todo
                     break;
                 case 6: //remove first
                     System.out.println("First node was removed, value was: " + mList.removeFirst());
@@ -51,7 +51,7 @@ public class MainFile {
                 case 7: //remove last
                     System.out.println("Last node was removed, value was: " + mList.removeLast());
                     break;
-                case 8: //remove x
+                case 8: //remove x todo
                     break;
                 case 9: //add first
                     System.out.println("What should be added to first?");
@@ -62,8 +62,13 @@ public class MainFile {
                     mList.addLast(keyboard.next());
                     break;
                 case 11: //insert
+                    System.out.println("Where should the new node be created?");
+                    int index = keyboard.nextInt();
+                    System.out.println("What data should be added?");
+                    String data = keyboard.next();
+                    mList.add(index,data);
                     break;
-                case 12: //set x
+                case 12: //set x todo
                     break;
                 case 13: //is empty
                     if (mList.empty()) System.out.println("List is empty.");

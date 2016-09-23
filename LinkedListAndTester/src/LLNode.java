@@ -6,6 +6,8 @@
  *         Part of project LinkedListAndTester
  */
 
+@SuppressWarnings("WeakerAccess")
+
 public class LLNode<E> {
     private E data;
     private LLNode<E> next;

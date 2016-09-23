@@ -57,7 +57,7 @@ public class LinkedList<E> {
         return last;
     }
 
-    //manipulation methods
+    //manipulation methods -------------------
 
     /**
      * Removes the first node, returns it's old value
@@ -154,21 +154,32 @@ public class LinkedList<E> {
         return null;
     }
 
-    public void add(int x, E data) {
+    /**
+     * Adds a new node at a certain position
+     *
+     * @param x    index to add at.
+     * @param data data to make a new node with.
+     */
+    public void add(int x, E data) { //fixme not quite working yet
+        if (x == 0) addFirst(data); //if adding at the first spot, just call addFirst
+        else {
+            LLNode<E> newNode = first;
+            LLNode<E> previousNode = first;
+            
+            for (int i = 1; i < x; i++) {
+                previousNode = newNode;
+                newNode = newNode.getNext();
+            }
+
+            previousNode.setNext(newNode);
+            newNode.setNext(newNode.getNext());
+        }
     }
 
     public E set(int x, E data) {
         return null;
     }
 
-    /**
-     * Returns if the list has a next node.
-     *
-     * @return True if there is a next node, ie last != null
-     */
-    /*public boolean hasNext() {
-        return (last != null); //todo i think this is right?
-    }*/
     public E next() {
         return null;
     }
