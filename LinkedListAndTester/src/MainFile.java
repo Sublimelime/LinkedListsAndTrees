@@ -1,7 +1,7 @@
-/**
- * Created on 9/20/2016, 2:18 PM
- *
- * @author Noah Morton
+/*
+  Created on 9/20/2016, 2:18 PM
+
+  @author Noah Morton
  * Tully 7th period
  * Part of project LinkedListAndTester
  */
@@ -32,26 +32,24 @@ public class MainFile {
                     System.exit(0);
                     break;
                 case 1: //size
-                    System.out.println("The size of the list is: "+mList.size());
+                    System.out.println("The size of the list is: " + mList.size());
                     break;
                 case 2: //print
-                    System.out.println("Printing...\n"+mList.toString());
+                    System.out.println("Printing...\n" + mList.toString());
                     break;
                 case 3: //print first
-                    System.out.println("Printing...\n"+mList.getFirst());
+                    System.out.println("Printing...\n" + mList.getFirst());
                     break;
                 case 4: //print last
-                    System.out.println("Printing...\n"+mList.getLast());
+                    System.out.println("Printing...\n" + mList.getLast());
                     break;
                 case 5: //get location
                     break;
                 case 6: //remove first
-                    mList.removeFirst();
-                    System.out.println("First node was removed.");
+                    System.out.println("First node was removed, value was: " + mList.removeFirst());
                     break;
                 case 7: //remove last
-                    mList.removeLast();
-                    System.out.println("Last node was removed.");
+                    System.out.println("Last node was removed, value was: " + mList.removeLast());
                     break;
                 case 8: //remove x
                     break;
@@ -68,7 +66,8 @@ public class MainFile {
                 case 12: //set x
                     break;
                 case 13: //is empty
-                    System.out.println((mList.empty()) ? "List is" : "List is not" + " empty.");
+                    if (mList.empty()) System.out.println("List is empty.");
+                    else System.out.println("List is not empty.");
                     break;
                 case 14: //clear
                     System.out.println("Clearing...");
@@ -78,7 +77,6 @@ public class MainFile {
                     System.out.println("Invalid choice.");
                     break;
             }
-
         } while (true);
     }
 }

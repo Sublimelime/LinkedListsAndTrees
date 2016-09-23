@@ -6,6 +6,7 @@
  *         Part of project LinkedListAndTester
  */
 
+@SuppressWarnings("WeakerAccess")
 public class LinkedList<E> {
 
     private LLNode<E> first, last;
@@ -21,10 +22,10 @@ public class LinkedList<E> {
     /**
      * Sets up the link list setting both first and last to a new node.
      *
-     * @param data
+     * @param data data to create the linked list with
      */
     public LinkedList(E data) {
-        LLNode<E> newNode = new LLNode<E>(data);
+        LLNode<E> newNode = new LLNode<>(data);
         first = newNode;
         last = newNode;
     }
@@ -35,7 +36,7 @@ public class LinkedList<E> {
     }
 
     public E getLast() {
-        return last.getData(); //fixme
+        return last.getData();
     }
 
     /**
@@ -82,25 +83,32 @@ public class LinkedList<E> {
 
     /**
      * Adds a new node to the list at the first spot, sets the old first to be second to the new node.
+     *
      * @param data data to create a new node with.
      */
     public void addFirst(E data) {
         if (first == null) {
-            first = new LLNode<>(data);
+            first = last = new LLNode<>(data);
+
         } else {
             LLNode<E> temp = new LLNode<>(data);
             temp.setNext(first);
-            first=temp;
+            first = temp;
         }
     }
 
+    /**
+     * Adds a new node to the list at the last spot, sets the old last to be second-to-last to the new node.
+     *
+     * @param data data to create a new node with.
+     */
     public void addLast(E data) {
         if (last == null) {
-            last = new LLNode<>(data);
+            first = last = new LLNode<>(data);
         } else {
             LLNode<E> temp = new LLNode<>(data);
-            temp.setNext(last);
-            last=temp;
+            last.setNext(temp);
+            last = temp;
         }
     }
 
@@ -112,15 +120,21 @@ public class LinkedList<E> {
         last = null;
     }
 
+    /**
+     * Returns the size of the linked list
+     *
+     * @return int the size of the linked list
+     */
     public int size() {
-        /*int finalSize = 0;
+        LLNode<E> item = first;
+        int finalSize = 0;
 
-        while () {
+        while (item != null) {
             finalSize++;
+            item = item.getNext();
         }
 
-        return finalSize;*/
-        return 0;
+        return finalSize;
     }
 
     /**
@@ -155,7 +169,6 @@ public class LinkedList<E> {
     /*public boolean hasNext() {
         return (last != null); //todo i think this is right?
     }*/
-
     public E next() {
         return null;
     }
