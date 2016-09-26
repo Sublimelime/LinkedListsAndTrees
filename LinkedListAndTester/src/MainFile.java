@@ -43,7 +43,9 @@ public class MainFile {
                 case 4: //print last
                     System.out.println("Printing...\n" + mList.getLast());
                     break;
-                case 5: //get location todo
+                case 5: //get location
+                    System.out.println("What location to get?");
+                    System.out.println("The node's data is: "+mList.get(keyboard.nextInt()));
                     break;
                 case 6: //remove first
                     System.out.println("First node was removed, value was: " + mList.removeFirst());
@@ -64,11 +66,24 @@ public class MainFile {
                 case 11: //insert
                     System.out.println("Where should the new node be created?");
                     int index = keyboard.nextInt();
+                    if (index>mList.size()) { //if the provided index is larger than the list
+                        System.err.println("Cannot add at that location, list size is "+mList.size());
+                        break;
+                    }
                     System.out.println("What data should be added?");
                     String data = keyboard.next();
                     mList.add(index,data);
                     break;
-                case 12: //set x todo
+                case 12: //set x
+                    System.out.println("What node should be set?");
+                    int indexToSet = keyboard.nextInt();
+                    if (indexToSet>mList.size()) { //if the provided index is larger than the list
+                        System.err.println("Cannot add at that location, list size is "+mList.size());
+                        break;
+                    }
+                    System.out.println("What data should be set?");
+                    String dataToSet = keyboard.next();
+                    mList.add(indexToSet,dataToSet);
                     break;
                 case 13: //is empty
                     if (mList.empty()) System.out.println("List is empty.");

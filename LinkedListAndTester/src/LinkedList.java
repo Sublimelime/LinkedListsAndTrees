@@ -147,22 +147,33 @@ public class LinkedList<E> {
     }
 
     /**
-     * Gets the data of an object at a location
+     * Gets the node at a location
+     *
      * @param x int The index to get from
+     * @throws IndexOutOfBoundsException if the index is invalid or not found.
      * @return E The node at x's position
      */
-    public E get(int x) {
-        return null;
+    public E get(int x) throws IndexOutOfBoundsException { //fixme not quite working
+        E found = null;
+        int index = 0;
+        LLNode<E> item = first;
+
+        while (item != null && index<x) {
+            index++;
+            item = item.getNext();
+        }
+        return item.getData();
     }
 
     /**
      * Removes a node at a position.
+     *
      * @param x int The index to remove at.
      * @return LLNode The node that was removed.
      */
     public E remove(int x) {
         return null;
-    }
+    } //todo remove method
 
     /**
      * Adds a new node at a certain position
@@ -170,35 +181,36 @@ public class LinkedList<E> {
      * @param x    index to add at.
      * @param data data to make a new node with.
      */
-    public void add(int x, E data) { //fixme not quite working yet
+    public void add(int x, E data) {
         if (x == 0) addFirst(data); //if adding at the first spot, just call addFirst
+        else if (x == size()) addLast(data); //if adding at the last spot or beyond, just call addLast
         else {
-            LLNode<E> newNode = first;
+            LLNode<E> newNode = new LLNode<>(data);
             LLNode<E> previousNode = first;
 
-            for (int i = 1; i < x; i++) {
+            for (int i = 1; i < x; i++) { //while i < index provided
                 previousNode = newNode;
                 newNode = newNode.getNext();
             }
-
+            newNode.setNext(previousNode.getNext());
             previousNode.setNext(newNode);
-            newNode.setNext(newNode.getNext());
         }
     }
 
     /**
      * Sets a node's data at a certain index.
-     * @param x int Index to set at
+     *
+     * @param x    int Index to set at
      * @param data E Data to set to
      * @return E The replaced data, if any
      */
     public E set(int x, E data) {
         return null;
-    }
+    } //todo set method
 
-    public E next() {
-        return null;
-    }
+    /*public E next() {
+        return null; todo remove if unused
+    }*/
 
     @Override
     public String toString() {
