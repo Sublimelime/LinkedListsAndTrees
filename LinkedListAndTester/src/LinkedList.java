@@ -146,10 +146,20 @@ public class LinkedList<E> {
         return (first == null && last == null);
     }
 
+    /**
+     * Gets the data of an object at a location
+     * @param x int The index to get from
+     * @return E The node at x's position
+     */
     public E get(int x) {
         return null;
     }
 
+    /**
+     * Removes a node at a position.
+     * @param x int The index to remove at.
+     * @return LLNode The node that was removed.
+     */
     public E remove(int x) {
         return null;
     }
@@ -165,7 +175,7 @@ public class LinkedList<E> {
         else {
             LLNode<E> newNode = first;
             LLNode<E> previousNode = first;
-            
+
             for (int i = 1; i < x; i++) {
                 previousNode = newNode;
                 newNode = newNode.getNext();
@@ -176,6 +186,12 @@ public class LinkedList<E> {
         }
     }
 
+    /**
+     * Sets a node's data at a certain index.
+     * @param x int Index to set at
+     * @param data E Data to set to
+     * @return E The replaced data, if any
+     */
     public E set(int x, E data) {
         return null;
     }
