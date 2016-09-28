@@ -186,13 +186,25 @@ public class LinkedList<E> {
      * Removes a node at a position.
      *
      * @param x int The index to remove at.
-     * @return LLNode The node that was removed.
+     * @return E the data of the node removed
      */
-    public E remove(int x) {
-        if (x == 0) removeFirst(); //if provided index is the first or end of the list
+    public E remove(int x) { //fixme not quite working -Get works, and removes correctly, but is removing two nodes at once.
+        E removedData = getNodeFromIndex(x).getData();
+        if (x == 0) return removeFirst().getData(); //if provided index is the first or end of the list
+        if (x == size()-1) return removeLast().getData();
 
+        int index = 0;
+        LLNode<E> item = first;
+        LLNode<E> previous = first;
 
-        return null;
+        while (index < x) {
+            previous = item;
+            item = item.getNext();
+            index++;
+        }
+        previous.setNext(item.getNext().getNext());
+
+        return removedData;
     }
 
     /**
