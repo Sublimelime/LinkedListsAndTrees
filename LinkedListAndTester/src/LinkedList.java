@@ -150,19 +150,18 @@ public class LinkedList<E> {
      * Gets the node at a location
      *
      * @param x int The index to get from
-     * @throws IndexOutOfBoundsException if the index is invalid or not found.
      * @return E The node at x's position
      */
-    public E get(int x) throws IndexOutOfBoundsException { //fixme not quite working
-        E found = null;
+    public E get(int x) {
         int index = 0;
         LLNode<E> item = first;
 
-        while (item != null && index<x) {
+        while (item != null && index < x) {
             index++;
             item = item.getNext();
         }
-        return item.getData();
+        if (item == null) return null; //if not found
+        else return item.getData();
     }
 
     /**
