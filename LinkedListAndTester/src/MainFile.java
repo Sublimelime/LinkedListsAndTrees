@@ -53,7 +53,14 @@ public class MainFile {
                 case 7: //remove last
                     System.out.println("Last node was removed, value was: " + mList.removeLast());
                     break;
-                case 8: //remove x todo
+                case 8: //remove x
+                    System.out.println("What node should be removed?");
+                    int indexToRemove = keyboard.nextInt();
+                    if (indexToRemove>mList.size()-1) { //if the provided index is larger than the list
+                        System.err.println("Cannot remove from that location, list size is "+mList.size());
+                        break;
+                    }
+                    System.out.println("The removed node is: "+mList.remove(indexToRemove));
                     break;
                 case 9: //add first
                     System.out.println("What should be added to first?");
@@ -77,13 +84,13 @@ public class MainFile {
                 case 12: //set x
                     System.out.println("What node should be set?");
                     int indexToSet = keyboard.nextInt();
-                    if (indexToSet>mList.size()) { //if the provided index is larger than the list
-                        System.err.println("Cannot add at that location, list size is "+mList.size());
+                    if (indexToSet>mList.size()-1) { //if the provided index is larger than the list
+                        System.err.println("Cannot set at that location, list size is "+mList.size());
                         break;
                     }
                     System.out.println("What data should be set?");
                     String dataToSet = keyboard.next();
-                    mList.add(indexToSet,dataToSet);
+                    mList.set(indexToSet,dataToSet);
                     break;
                 case 13: //is empty
                     if (mList.empty()) System.out.println("List is empty.");

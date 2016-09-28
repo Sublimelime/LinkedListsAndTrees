@@ -147,10 +147,10 @@ public class LinkedList<E> {
     }
 
     /**
-     * Gets the node at a location
+     * Gets the node's data at a location
      *
      * @param x int The index to get from
-     * @return E The node at x's position
+     * @return E The node data at x's position
      */
     public E get(int x) {
         int index = 0;
@@ -165,14 +165,35 @@ public class LinkedList<E> {
     }
 
     /**
+     * Gets the node at a location
+     *
+     * @param x int The index to get from
+     * @return E The node at x's position
+     */
+    public LLNode<E> getNodeFromIndex(int x) {
+        int index = 0;
+        LLNode<E> item = first;
+
+        while (item != null && index < x) {
+            index++;
+            item = item.getNext();
+        }
+        if (item == null) return null; //if not found
+        else return item;
+    }
+
+    /**
      * Removes a node at a position.
      *
      * @param x int The index to remove at.
      * @return LLNode The node that was removed.
      */
     public E remove(int x) {
+        if (x == 0) removeFirst(); //if provided index is the first or end of the list
+
+
         return null;
-    } //todo remove method
+    }
 
     /**
      * Adds a new node at a certain position
@@ -201,15 +222,18 @@ public class LinkedList<E> {
      *
      * @param x    int Index to set at
      * @param data E Data to set to
-     * @return E The replaced data, if any
+     * @return E The replaced data, if any, or null
      */
     public E set(int x, E data) {
-        return null;
-    } //todo set method
-
-    /*public E next() {
-        return null; todo remove if unused
-    }*/
+        if(getNodeFromIndex(x).getData() == null) {
+            getNodeFromIndex(x).setData(data); //set the data to provided, since it's blank.
+            return null;
+        } else {
+            E oldData = getNodeFromIndex(x).getData();
+            getNodeFromIndex(x).setData(data);
+            return oldData;
+        }
+    }
 
     @Override
     public String toString() {
