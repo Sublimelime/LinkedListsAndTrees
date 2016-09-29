@@ -1,9 +1,9 @@
 /**
- * Created on 9/20/2016, 2:18 PM
+ * Created on 9/29/2016, 2:26 PM
  *
  * @author Noah Morton
  *         Tully 7th period
- *         Part of project LinkedListAndTester
+ *         Part of project DoubleCircleLinkList
  */
 
 @SuppressWarnings("WeakerAccess")
@@ -25,9 +25,10 @@ public class DoubleCircleLinkedList<E> {
      * @param data data to create the linked list with
      */
     public DoubleCircleLinkedList(E data) {
-        LLNode<E> newNode = new LLNode<>(data);
-        first = newNode;
-        last = newNode;
+        first = last = new LLNode<E>(data);
+        first.setNext(first); //the list is now a small circle that points to itself
+        first.setPrevious(first);
+
     }
 
     //getters
@@ -64,7 +65,7 @@ public class DoubleCircleLinkedList<E> {
      *
      * @return the old value of first.
      */
-    public LLNode<E> removeFirst() {
+    public LLNode<E> removeFirst() { //todo
         try {
             LLNode<E> oldFirst = first;
             first = first.getNext();
@@ -79,7 +80,7 @@ public class DoubleCircleLinkedList<E> {
      *
      * @return the old value of last.
      */
-    public LLNode<E> removeLast() {
+    public LLNode<E> removeLast() { //todo
         try {
             LLNode<E> oldLast = first;
             last = null;
@@ -94,10 +95,11 @@ public class DoubleCircleLinkedList<E> {
      *
      * @param data data to create a new node with.
      */
-    public void addFirst(E data) {
+    public void addFirst(E data) { //todo
         if (first == null) {
             first = last = new LLNode<>(data);
-
+            first.setNext(first);
+            first.setPrevious(first);
         } else {
             LLNode<E> temp = new LLNode<>(data);
             temp.setNext(first);
@@ -110,7 +112,7 @@ public class DoubleCircleLinkedList<E> {
      *
      * @param data data to create a new node with.
      */
-    public void addLast(E data) {
+    public void addLast(E data) { //todo
         if (last == null) {
             first = last = new LLNode<>(data);
         } else {
@@ -133,7 +135,7 @@ public class DoubleCircleLinkedList<E> {
      *
      * @return int the size of the linked list
      */
-    public int size() {
+    public int size() { //todo
         LLNode<E> item = first;
         int finalSize = 0;
 
@@ -160,7 +162,7 @@ public class DoubleCircleLinkedList<E> {
      * @param x int The index to get from
      * @return E The node data at x's position
      */
-    public E get(int x) {
+    public E get(int x) { //todo
         int index = 0;
         LLNode<E> item = first;
 
@@ -178,7 +180,7 @@ public class DoubleCircleLinkedList<E> {
      * @param x int The index to get from
      * @return E The node at x's position
      */
-    public LLNode<E> getNodeFromIndex(int x) {
+    public LLNode<E> getNodeFromIndex(int x) { //todo
         int index = 0;
         LLNode<E> item = first;
 
@@ -196,7 +198,7 @@ public class DoubleCircleLinkedList<E> {
      * @param x int The index to remove at.
      * @return E the data of the node removed
      */
-    public E remove(int x) {
+    public E remove(int x) { //todo
         E removedData = getNodeFromIndex(x).getData();
         if (x == 0) return removeFirst().getData(); //if provided index is the first or end of the list
         if (x == size() - 1) return removeLast().getData();
@@ -220,7 +222,7 @@ public class DoubleCircleLinkedList<E> {
      * @param x    index to add at.
      * @param data data to make a new node with.
      */
-    public void add(int x, E data) {
+    public void add(int x, E data) { //todo
         if (x == 0) addFirst(data); //if adding at the first spot, just call addFirst
         else if (x == size()) addLast(data); //if adding at the last spot or beyond, just call addLast
         else {
@@ -243,7 +245,7 @@ public class DoubleCircleLinkedList<E> {
      * @param data E Data to set to
      * @return E The replaced data, if any, or null
      */
-    public E set(int x, E data) {
+    public E set(int x, E data) { //todo
         if (getNodeFromIndex(x).getData() == null) {
             getNodeFromIndex(x).setData(data); //set the data to provided, since it's blank.
             return null;
@@ -255,7 +257,7 @@ public class DoubleCircleLinkedList<E> {
     }
 
     @Override
-    public String toString() {
+    public String toString() { //todo needs to not run infinitely
         LLNode<E> item = first;
         String finalString = "";
 

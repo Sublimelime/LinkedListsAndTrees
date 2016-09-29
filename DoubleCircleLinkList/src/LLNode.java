@@ -1,9 +1,9 @@
 /**
- * Created on 9/20/2016, 2:18 PM
+ * Created on 9/29/2016, 2:26 PM
  *
  * @author Noah Morton
  *         Tully 7th period
- *         Part of project LinkedListAndTester
+ *         Part of project DoubleCircleLinkList
  */
 
 @SuppressWarnings("WeakerAccess")
@@ -16,6 +16,7 @@ public class LLNode<E> {
     public LLNode(E data) {
         this.data = data;
         next = null;
+        previous = null;
     }
 
     public E getData() {
@@ -34,12 +35,16 @@ public class LLNode<E> {
         return previous;
     }
 
+    public void setPrevious(LLNode<E> newPre) {
+        this.previous=newPre;
+    }
+
     public void setNext(LLNode<E> next) {
         this.next = next;
     }
 
     @Override
     public String toString() {
-        return "Node:{data=" + data + "; previous="+previous+"; next="+next+'}';
+        return "Node:{data=" + data + "; previousData="+previous.getData()+"; nextData="+next.getData()+'}';
     }
 }

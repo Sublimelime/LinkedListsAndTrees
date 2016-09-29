@@ -1,9 +1,9 @@
 /*
-  Created on 9/20/2016, 2:18 PM
-
-  @author Noah Morton
- * Tully 7th period
- * Part of project LinkedListAndTester
+ * Created on 9/29/2016, 2:26 PM
+ *
+ * @author Noah Morton
+ *         Tully 7th period
+ *         Part of project DoubleCircleLinkList
  */
 
 import java.util.*;
