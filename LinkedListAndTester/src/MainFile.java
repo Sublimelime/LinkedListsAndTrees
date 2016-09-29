@@ -6,7 +6,7 @@
  * Part of project LinkedListAndTester
  */
 
-import java.util.Scanner;
+import java.util.*;
 
 public class MainFile {
     public static void main(String[] args) {
@@ -35,23 +35,33 @@ public class MainFile {
                     System.out.println("The size of the list is: " + mList.size());
                     break;
                 case 2: //print
-                    System.out.println("Printing...\n" + mList.toString());
+                    System.out.println("Printing all...\n" + mList.toString());
                     break;
                 case 3: //print first
-                    System.out.println("Printing...\n" + mList.getFirst());
+                    System.out.println("Printing first...\n" + mList.getFirst());
                     break;
                 case 4: //print last
-                    System.out.println("Printing...\n" + mList.getLast());
+                    System.out.println("Printing first...\n" + mList.getLast());
                     break;
                 case 5: //get location
                     System.out.println("What location to get?");
                     System.out.println("The node's data is: "+mList.get(keyboard.nextInt()));
                     break;
                 case 6: //remove first
-                    System.out.println("First node was removed, value was: " + mList.removeFirst());
+                    LLNode<String> removedValue = mList.removeFirst();
+                    if (removedValue == null) {
+                        System.out.println("List is empty. ");
+                        break;
+                    } else
+                        System.out.println("First node was removed, value was: " + mList.removeLast());
                     break;
                 case 7: //remove last
-                    System.out.println("Last node was removed, value was: " + mList.removeLast());
+                    LLNode<String> removedValue2 = mList.removeLast();
+                    if (removedValue2 == null) {
+                        System.out.println("List is empty. ");
+                        break;
+                    } else
+                        System.out.println("Last node was removed, value was: " + mList.removeLast());
                     break;
                 case 8: //remove x
                     System.out.println("What node should be removed?");
@@ -99,6 +109,7 @@ public class MainFile {
                 case 14: //clear
                     System.out.println("Clearing...");
                     mList.clear();
+                    System.out.println("Cleared.");
                     break;
                 default:
                     System.out.println("Invalid choice.");

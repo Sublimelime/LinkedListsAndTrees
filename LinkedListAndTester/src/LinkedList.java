@@ -65,9 +65,13 @@ public class LinkedList<E> {
      * @return the old value of first.
      */
     public LLNode<E> removeFirst() {
-        LLNode<E> oldFirst = first;
-        first = first.getNext();
-        return oldFirst;
+        try {
+            LLNode<E> oldFirst = first;
+            first = first.getNext();
+            return oldFirst;
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     /**
@@ -76,9 +80,13 @@ public class LinkedList<E> {
      * @return the old value of last.
      */
     public LLNode<E> removeLast() {
-        LLNode<E> oldLast = first;
-        last = null;
-        return oldLast;
+        try {
+            LLNode<E> oldLast = first;
+            last = null;
+            return oldLast;
+        } catch (NullPointerException e) {
+            return null;
+        }
     }
 
     /**
@@ -188,10 +196,10 @@ public class LinkedList<E> {
      * @param x int The index to remove at.
      * @return E the data of the node removed
      */
-    public E remove(int x) { //fixme not quite working -Get works, and removes correctly, but is removing two nodes at once.
+    public E remove(int x) {
         E removedData = getNodeFromIndex(x).getData();
         if (x == 0) return removeFirst().getData(); //if provided index is the first or end of the list
-        if (x == size()-1) return removeLast().getData();
+        if (x == size() - 1) return removeLast().getData();
 
         int index = 0;
         LLNode<E> item = first;
@@ -202,8 +210,7 @@ public class LinkedList<E> {
             item = item.getNext();
             index++;
         }
-        previous.setNext(item.getNext().getNext());
-
+        previous.setNext(item.getNext());
         return removedData;
     }
 
@@ -237,7 +244,7 @@ public class LinkedList<E> {
      * @return E The replaced data, if any, or null
      */
     public E set(int x, E data) {
-        if(getNodeFromIndex(x).getData() == null) {
+        if (getNodeFromIndex(x).getData() == null) {
             getNodeFromIndex(x).setData(data); //set the data to provided, since it's blank.
             return null;
         } else {
