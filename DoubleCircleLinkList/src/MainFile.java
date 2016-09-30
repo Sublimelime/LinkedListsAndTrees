@@ -30,6 +30,8 @@ public class MainFile {
                     System.out.println("Printing....\n"+mList.printForwards(keyboard.nextInt()));
                     break;
                 case 2:
+                    System.out.println("How many to print?");
+                    System.out.println("Printing....\n"+mList.printBackwards(keyboard.nextInt()));
                     break;
                 case 3:
                     break;

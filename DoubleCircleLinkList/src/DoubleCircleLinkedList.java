@@ -263,13 +263,33 @@ public class DoubleCircleLinkedList<E> {
         }
     }
 
+    /**
+     * Prints the list forwards, for a certain number of prints.
+     * @param numToPrint Number of values to print, >size will print in a loop.
+     * @return String to print list
+     */
     public String printForwards(int numToPrint) {
         LLNode<E> item = first;
         String finalString = "";
         for (int i = 0; i<numToPrint; i++) {
             finalString += item.toString() + "\n";
-            if(item.getNext() == null) item = first; //if at the end of the list, start over
             item = item.getNext();
+        }
+
+        return finalString;
+    }
+
+    /**
+     * Prints the list backwards, for a certain number of prints.
+     * @param numToPrint Number of values to print, >size will print in a loop.
+     * @return String to print list
+     */
+    public String printBackwards(int numToPrint) { //todo -test
+        LLNode<E> item = last;
+        String finalString = "";
+        for (int i = 0; i<numToPrint; i++) {
+            finalString += item.toString() + "\n";
+            item = item.getPrevious();
         }
 
         return finalString;
