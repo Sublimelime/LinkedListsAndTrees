@@ -100,7 +100,8 @@ public class MainFile {
                     }
                     System.out.println("What data should be set?");
                     String dataToSet = keyboard.next();
-                    mList.set(indexToSet,dataToSet);
+                    String replaced = mList.set(indexToSet,dataToSet);
+                    if (replaced != null) System.out.println("Replaced value is "+replaced);
                     break;
                 case 13: //is empty
                     if (mList.empty()) System.out.println("List is empty.");

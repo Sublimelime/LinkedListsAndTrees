@@ -23,8 +23,11 @@ public class MainFile {
 
             switch (choice) {
                 case 0:
+                    System.exit(0);
                     break;
                 case 1:
+                    System.out.println("How many to print?");
+                    System.out.println("Printing....\n"+mList.printForwards(keyboard.nextInt()));
                     break;
                 case 2:
                     break;
@@ -41,6 +44,8 @@ public class MainFile {
                 case 8:
                     break;
                 case 9:
+                    System.out.println("What should be added to first?");
+                    mList.addFirst(keyboard.next());
                     break;
                 case 10:
                     break;
@@ -51,6 +56,8 @@ public class MainFile {
                 case 13:
                     break;
                 case 14:
+                    break;
+                case 15:
                     break;
                 default:
                     System.out.println("Invalid choice.");

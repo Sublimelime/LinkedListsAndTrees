@@ -45,6 +45,14 @@ public class LLNode<E> {
 
     @Override
     public String toString() {
+        return "Node:{data=" + data +'}';
+    }
+
+    /**
+     * Prints detailed data about a node.
+     * @return Detailed data.
+     */
+    public String toStringDetailed() {
         return "Node:{data=" + data + "; previousData="+previous.getData()+"; nextData="+next.getData()+'}';
     }
 }

@@ -95,7 +95,7 @@ public class DoubleCircleLinkedList<E> {
      *
      * @param data data to create a new node with.
      */
-    public void addFirst(E data) { //todo
+    public void addFirst(E data) { //todo -test
         if (first == null) {
             first = last = new LLNode<>(data);
             first.setNext(first);
@@ -103,6 +103,9 @@ public class DoubleCircleLinkedList<E> {
         } else {
             LLNode<E> temp = new LLNode<>(data);
             temp.setNext(first);
+            temp.setPrevious(last);
+            last.setNext(temp);
+            first.setPrevious(temp);
             first = temp;
         }
     }
@@ -112,12 +115,16 @@ public class DoubleCircleLinkedList<E> {
      *
      * @param data data to create a new node with.
      */
-    public void addLast(E data) { //todo
+    public void addLast(E data) { //todo -test
         if (last == null) {
             first = last = new LLNode<>(data);
         } else {
             LLNode<E> temp = new LLNode<>(data);
             last.setNext(temp);
+            first.setPrevious(temp);
+            temp.setNext(first);
+            temp.setPrevious(last);
+
             last = temp;
         }
     }
@@ -256,15 +263,20 @@ public class DoubleCircleLinkedList<E> {
         }
     }
 
-    @Override
-    public String toString() { //todo needs to not run infinitely
+    public String printForwards(int numToPrint) {
         LLNode<E> item = first;
         String finalString = "";
-
-        while (item != null) {
+        for (int i = 0; i<numToPrint; i++) {
             finalString += item.toString() + "\n";
+            if(item.getNext() == null) item = first; //if at the end of the list, start over
             item = item.getNext();
         }
+
         return finalString;
+    }
+
+    @Override
+    public String toString() { //todo -check, test
+        return printForwards(size());
     }
 }
