@@ -81,7 +81,7 @@ public class LinkedList<E> {
      */
     public LLNode<E> removeLast() {
         try {
-            LLNode<E> oldLast = first;
+            LLNode<E> oldLast = last;
             last = null;
             return oldLast;
         } catch (NullPointerException e) {
