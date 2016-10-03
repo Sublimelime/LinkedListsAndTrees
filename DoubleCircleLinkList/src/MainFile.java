@@ -17,7 +17,9 @@ public class MainFile {
         do {
             System.out.print("\n-Menu-\n");
 
-            System.out.println("");
+            System.out.println("1. Print Forward\n"+ "2. Print Backward\n"+ "3. Print First\n"+ "4. Print Last\n"+ "5. Get X\n"+
+            "6. Remove First\n" + "7. Remove Last\n"+ "8. Remove X\n"+ "9. Add to First\n"+ "10. Add to Last\n"+
+            "11. Insert\n"+ "12. Set X\n"+ "13. Size\n"+ "14. Is Empty\n"+ "15. Clear\n"+ "0. Exit\n");
 
             byte choice = keyboard.nextByte();
 
@@ -40,16 +42,24 @@ public class MainFile {
                 case 5:
                     break;
                 case 6:
+                    String removedValue = mList.removeFirst();
+                    if (removedValue == null) {
+                        System.out.println("List is empty. ");
+                        break;
+                    } else
+                        System.out.println("First node was removed, value was: " + removedValue);
                     break;
                 case 7:
                     break;
                 case 8:
                     break;
-                case 9:
+                case 9: //add first
                     System.out.println("What should be added to first?");
                     mList.addFirst(keyboard.next());
                     break;
-                case 10:
+                case 10: //add last
+                    System.out.println("What should be added to Last?");
+                    mList.addLast(keyboard.next());
                     break;
                 case 11:
                     break;

@@ -65,11 +65,13 @@ public class DoubleCircleLinkedList<E> {
      *
      * @return the old value of first.
      */
-    public LLNode<E> removeFirst() { //todo
+    public E removeFirst() {
         try {
             LLNode<E> oldFirst = first;
+            first.getNext().setPrevious(last);
             first = first.getNext();
-            return oldFirst;
+            last.setNext(first);
+            return oldFirst.getData();
         } catch (NullPointerException e) {
             return null;
         }
@@ -95,7 +97,7 @@ public class DoubleCircleLinkedList<E> {
      *
      * @param data data to create a new node with.
      */
-    public void addFirst(E data) { //todo -test
+    public void addFirst(E data) {
         if (first == null) {
             first = last = new LLNode<>(data);
             first.setNext(first);
@@ -115,7 +117,7 @@ public class DoubleCircleLinkedList<E> {
      *
      * @param data data to create a new node with.
      */
-    public void addLast(E data) { //todo -test
+    public void addLast(E data) {
         if (last == null) {
             first = last = new LLNode<>(data);
         } else {
@@ -207,7 +209,7 @@ public class DoubleCircleLinkedList<E> {
      */
     public E remove(int x) { //todo
         E removedData = getNodeFromIndex(x).getData();
-        if (x == 0) return removeFirst().getData(); //if provided index is the first or end of the list
+        if (x == 0) return removeFirst(); //if provided index is the first or end of the list
         if (x == size() - 1) return removeLast().getData();
 
         int index = 0;
@@ -284,14 +286,13 @@ public class DoubleCircleLinkedList<E> {
      * @param numToPrint Number of values to print, >size will print in a loop.
      * @return String to print list
      */
-    public String printBackwards(int numToPrint) { //todo -test
+    public String printBackwards(int numToPrint) {
         LLNode<E> item = last;
         String finalString = "";
         for (int i = 0; i<numToPrint; i++) {
             finalString += item.toString() + "\n";
             item = item.getPrevious();
         }
-
         return finalString;
     }
 
