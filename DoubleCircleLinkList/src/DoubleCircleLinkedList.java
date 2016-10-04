@@ -82,11 +82,15 @@ public class DoubleCircleLinkedList<E> {
      *
      * @return the old value of last.
      */
-    public LLNode<E> removeLast() { //todo
+    public E removeLast() {
         try {
-            LLNode<E> oldLast = first;
-            last = null;
-            return oldLast;
+            LLNode<E> oldLast = last;
+
+            last.getPrevious().setNext(first);
+            first.setPrevious(last.getPrevious());
+
+            last = last.getPrevious();
+            return oldLast.getData();
         } catch (NullPointerException e) {
             return null;
         }
@@ -144,15 +148,15 @@ public class DoubleCircleLinkedList<E> {
      *
      * @return int the size of the linked list
      */
-    public int size() { //todo
+    public int size() {
         LLNode<E> item = first;
         int finalSize = 0;
+        if (empty()) return 0; //empty
 
-        while (item != null) {
+        do {
             finalSize++;
             item = item.getNext();
-        }
-
+        } while (item != first);
         return finalSize;
     }
 
@@ -171,7 +175,7 @@ public class DoubleCircleLinkedList<E> {
      * @param x int The index to get from
      * @return E The node data at x's position
      */
-    public E get(int x) { //todo
+    public E get(int x) {
         int index = 0;
         LLNode<E> item = first;
 
@@ -193,7 +197,7 @@ public class DoubleCircleLinkedList<E> {
         int index = 0;
         LLNode<E> item = first;
 
-        while (item != null && index < x) {
+        while (index < x) {
             index++;
             item = item.getNext();
         }
@@ -208,19 +212,22 @@ public class DoubleCircleLinkedList<E> {
      * @return E the data of the node removed
      */
     public E remove(int x) { //todo
+        System.out.println("b");
         E removedData = getNodeFromIndex(x).getData();
+        System.out.println("c");
         if (x == 0) return removeFirst(); //if provided index is the first or end of the list
-        if (x == size() - 1) return removeLast().getData();
+        if (x == size() - 1) return removeLast();
 
         int index = 0;
         LLNode<E> item = first;
         LLNode<E> previous = first;
-
+        System.out.println("d");
         while (index < x) {
-            previous = item;
+            previous = item.getPrevious();
             item = item.getNext();
             index++;
         }
+        System.out.println("e");
         previous.setNext(item.getNext());
         return removedData;
     }
@@ -267,13 +274,16 @@ public class DoubleCircleLinkedList<E> {
 
     /**
      * Prints the list forwards, for a certain number of prints.
+     *
      * @param numToPrint Number of values to print, >size will print in a loop.
      * @return String to print list
      */
     public String printForwards(int numToPrint) {
         LLNode<E> item = first;
         String finalString = "";
-        for (int i = 0; i<numToPrint; i++) {
+        if (size() == 0) return finalString; //don't print if list empty
+
+        for (int i = 0; i < numToPrint; i++) {
             finalString += item.toString() + "\n";
             item = item.getNext();
         }
@@ -283,13 +293,16 @@ public class DoubleCircleLinkedList<E> {
 
     /**
      * Prints the list backwards, for a certain number of prints.
+     *
      * @param numToPrint Number of values to print, >size will print in a loop.
      * @return String to print list
      */
     public String printBackwards(int numToPrint) {
         LLNode<E> item = last;
         String finalString = "";
-        for (int i = 0; i<numToPrint; i++) {
+        if (size() == 0) return finalString; //don't print if list empty
+
+        for (int i = 0; i < numToPrint; i++) {
             finalString += item.toString() + "\n";
             item = item.getPrevious();
         }
