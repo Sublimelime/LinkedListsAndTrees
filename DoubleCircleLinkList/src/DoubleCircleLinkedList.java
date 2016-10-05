@@ -211,24 +211,26 @@ public class DoubleCircleLinkedList<E> {
      * @param x int The index to remove at.
      * @return E the data of the node removed
      */
-    public E remove(int x) { //todo
-        System.out.println("b");
+    public E remove(int x) {
+
         E removedData = getNodeFromIndex(x).getData();
-        System.out.println("c");
+
         if (x == 0) return removeFirst(); //if provided index is the first or end of the list
         if (x == size() - 1) return removeLast();
 
         int index = 0;
         LLNode<E> item = first;
-        LLNode<E> previous = first;
-        System.out.println("d");
+
         while (index < x) {
-            previous = item.getPrevious();
+
             item = item.getNext();
             index++;
         }
-        System.out.println("e");
-        previous.setNext(item.getNext());
+        LLNode<E> previous = item.getPrevious();
+        LLNode<E> next = item.getNext();
+        previous.setNext(next);
+        next.setPrevious(previous);
+
         return removedData;
     }
 

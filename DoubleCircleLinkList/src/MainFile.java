@@ -69,7 +69,6 @@ public class MainFile {
                         System.err.println("Cannot remove from that location, list size is "+mList.size());
                         break;
                     }
-                    System.out.println("a");
                     System.out.println("The removed node is: "+mList.remove(indexToRemove));
                     break;
                 case 9: //add first
