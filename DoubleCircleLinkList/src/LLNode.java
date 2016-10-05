@@ -31,28 +31,29 @@ public class LLNode<E> {
         return next;
     }
 
+    public void setNext(LLNode<E> next) {
+        this.next = next;
+    }
+
     public LLNode<E> getPrevious() {
         return previous;
     }
 
     public void setPrevious(LLNode<E> newPre) {
-        this.previous=newPre;
-    }
-
-    public void setNext(LLNode<E> next) {
-        this.next = next;
+        this.previous = newPre;
     }
 
     @Override
     public String toString() {
-        return "Node:{data=" + data +'}';
+        return "Node:{data=" + data + '}';
     }
 
     /**
      * Prints detailed data about a node.
+     *
      * @return Detailed data.
      */
     public String toStringDetailed() {
-        return "Node:{data=" + data + "; previousData="+previous.getData()+"; nextData="+next.getData()+'}';
+        return "Node:{data=" + data + "; previousData=" + previous.getData() + "; nextData=" + next.getData() + '}';
     }
 }

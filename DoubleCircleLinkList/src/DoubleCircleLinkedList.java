@@ -25,7 +25,7 @@ public class DoubleCircleLinkedList<E> {
      * @param data data to create the linked list with
      */
     public DoubleCircleLinkedList(E data) {
-        first = last = new LLNode<E>(data);
+        first = last = new LLNode<>(data);
         first.setNext(first); //the list is now a small circle that points to itself
         first.setPrevious(first);
 
@@ -193,7 +193,7 @@ public class DoubleCircleLinkedList<E> {
      * @param x int The index to get from
      * @return E The node at x's position
      */
-    public LLNode<E> getNodeFromIndex(int x) { //todo
+    public LLNode<E> getNodeFromIndex(int x) {
         int index = 0;
         LLNode<E> item = first;
 
@@ -240,7 +240,7 @@ public class DoubleCircleLinkedList<E> {
      * @param x    index to add at.
      * @param data data to make a new node with.
      */
-    public void add(int x, E data) { //todo
+    public void add(int x, E data) {
         if (x == 0) addFirst(data); //if adding at the first spot, just call addFirst
         else if (x == size()) addLast(data); //if adding at the last spot or beyond, just call addLast
         else {
