@@ -263,7 +263,7 @@ public class DoubleCircleLinkedList<E> {
      * @param data E Data to set to
      * @return E The replaced data, if any, or null
      */
-    public E set(int x, E data) { //todo
+    public E set(int x, E data) {
         if (getNodeFromIndex(x).getData() == null) {
             getNodeFromIndex(x).setData(data); //set the data to provided, since it's blank.
             return null;
@@ -312,7 +312,7 @@ public class DoubleCircleLinkedList<E> {
     }
 
     @Override
-    public String toString() { //todo -check, test
+    public String toString() {
         return printForwards(size());
     }
 }
