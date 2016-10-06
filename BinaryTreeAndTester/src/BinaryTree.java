@@ -8,9 +8,10 @@ import java.util.Scanner;
  *         Part of project BinaryTreeAndTester
  */
 
+@SuppressWarnings("WeakerAccess")
 public class BinaryTree<E extends Comparable> {
 
-    private TreeNode<String> root;
+    private TreeNode<E> root;
 
     public BinaryTree() {
         this.root = null;
@@ -46,10 +47,19 @@ public class BinaryTree<E extends Comparable> {
     public boolean empty() {
         return root==null;
     }
-    public boolean contains() {
+
+    public boolean contains() { //todo -write
         return false;
     }
-    public boolean insert(E value) {
+
+    public boolean insert(E value) { //todo -write
+        if (root == null) { //if root doesn't exist
+            root = new TreeNode<E>(value);
+            return true;
+        }
+
+        
+
         return false;
     }
     public boolean add(E value) {

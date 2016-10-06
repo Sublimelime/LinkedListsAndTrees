@@ -8,11 +8,12 @@ import java.util.Scanner;
  *         Part of project BinaryTreeAndTester
  */
 
+@SuppressWarnings("WeakerAccess")
 public class Mainfile {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
 
-        BinaryTree mTree = new BinaryTree();
+        BinaryTree<String> mTree = new BinaryTree<>();
 
         do {
             System.out.print("\n-Menu-\n");
