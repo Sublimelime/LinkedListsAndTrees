@@ -17,31 +17,54 @@ public class BinaryTree<E extends Comparable> {
         this.root = null;
     }
 
-    public void preOrder(TreeNode<E> t)
-    {
-        if(t==null)
+    /**
+     * Recursively goes through the tree, printing it in pre-order format.
+     * @param t initial value to start from.
+     */
+    public void preOrder(TreeNode<E> t) { //todo -verify
+        if (t == null)
             return;
         System.out.println(t.toString());
         preOrder(t.getLeft());
         preOrder(t.getRight());
     }
-
-    private String inOrder() {
-        return null;
+    
+    /**
+     * Recursively goes through the tree, printing it in in-order format.
+     * @param t initial value to start from.
+     */
+    public void inOrder(TreeNode<E> t) { //todo -write
+        if (t == null)
+            return;
+        System.out.println(t.toString());
+        inOrder(t.getLeft());
+        inOrder(t.getRight());
     }
-    private String postOrder() {
-        return null;
+
+    /**
+     * Recursively goes through the tree, printing it in post-order format.
+     * @param t initial value to start from.
+     */
+    public void postOrder(TreeNode<E> t) { //todo -write
+        if (t == null)
+            return;
+        System.out.println(t.toString());
+        postOrder(t.getLeft());
+        postOrder(t.getRight());
     }
 
     public E minValue() {
         return null;
     }
+
     public E maxValue() {
         return null;
     }
+
     public int maxDepth() {
         return 0;
     }
+
     public void clear() {
         root = null;
     }
@@ -51,13 +74,19 @@ public class BinaryTree<E extends Comparable> {
     }
 
     public boolean empty() {
-        return root==null;
+        return root == null;
     }
 
     public boolean contains(E value) { //todo -write
         return false;
     }
 
+    /**
+     * Inserts a value into the tree
+     *
+     * @param value The value to attempt adding
+     * @return Success of add, fails if already in tree.
+     */
     public boolean insert(E value) { //todo -test
         if (contains(value)) { //if tree already contains value
             return false;
@@ -68,13 +97,13 @@ public class BinaryTree<E extends Comparable> {
         }
         TreeNode<E> nav = root; //start at root
         while (true) {
-            if (value.compareTo(nav.getData())>=1) { //if value is larger
+            if (value.compareTo(nav.getData()) >= 1) { //if value is larger
                 if (nav.getRight() == null) {
                     nav.setRight(new TreeNode<>(value));
                     return true;
                 } else
                     nav = nav.getRight();
-            } else if(value.compareTo(nav.getData())<=-1) { //if value is smaller
+            } else if (value.compareTo(nav.getData()) <= -1) { //if value is smaller
                 if (nav.getLeft() == null) {
                     nav.setLeft(new TreeNode<>(value));
                     return true;
@@ -83,26 +112,30 @@ public class BinaryTree<E extends Comparable> {
             }
         }
     }
+
     public boolean add(E value) {
-       return insert(value); //same as insert
+        return insert(value); //same as insert
     }
 
     public boolean remove(E value) {
         return false;
     }
 
+    /**
+     * Prints a menu of print choices.
+     */
     public void printSubMenu() {
         Scanner printChoice = new Scanner(System.in);
-        System.out.println("What kind of print? 1. Preorder, 2. Inorder, 3. Postorder.");
+        System.out.println("What kind of print? 1. PreOrder, 2. InOrder, 3. PostOrder.");
         switch (printChoice.nextInt()) {
             case 1:
                 preOrder(root);
                 break;
             case 2:
-                inOrder();
+                inOrder(root);
                 break;
             case 3:
-                postOrder();
+                postOrder(root);
                 break;
             default:
                 System.out.println("Invalid choice, not printing.");

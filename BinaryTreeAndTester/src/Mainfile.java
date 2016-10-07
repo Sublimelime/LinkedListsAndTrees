@@ -32,14 +32,27 @@ public class Mainfile {
                     mTree.printSubMenu();
                     break;
                 case 2: //size
+                    System.out.println("The size of the tree is "+mTree.size());
                     break;
                 case 3: //clear
+                    mTree.clear();
                     break;
                 case 4: //empty
+                    System.out.println((mTree.empty()) ? "Tree is empty.":"Tree is not empty.");
                     break;
                 case 5: //insert
+                    System.out.println("What should be inserted?");
+                    if (mTree.insert(keyboard.nextInt()))
+                        System.out.println("Successfully added.");
+                    else
+                        System.out.println("Failed to add, already in Tree.");
                     break;
                 case 6: //contains
+                    System.out.println("Check for what?");
+                    if(mTree.contains(keyboard.nextInt()))
+                        System.out.println("Already in the table.");
+                    else
+                        System.out.println("Not found, can be added.");
                     break;
                 case 7: //minimum val
                     break;
