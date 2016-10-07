@@ -17,9 +17,15 @@ public class BinaryTree<E extends Comparable> {
         this.root = null;
     }
 
-    private String preOrder() {
-        return null;
+    public void preOrder(TreeNode<E> t)
+    {
+        if(t==null)
+            return;
+        System.out.println(t.toString());
+        preOrder(t.getLeft());
+        preOrder(t.getRight());
     }
+
     private String inOrder() {
         return null;
     }
@@ -48,19 +54,34 @@ public class BinaryTree<E extends Comparable> {
         return root==null;
     }
 
-    public boolean contains() { //todo -write
+    public boolean contains(E value) { //todo -write
         return false;
     }
 
-    public boolean insert(E value) { //todo -write
+    public boolean insert(E value) { //todo -test
+        if (contains(value)) { //if tree already contains value
+            return false;
+        }
         if (root == null) { //if root doesn't exist
-            root = new TreeNode<E>(value);
+            root = new TreeNode<>(value);
             return true;
         }
-
-        
-
-        return false;
+        TreeNode<E> nav = root; //start at root
+        while (true) {
+            if (value.compareTo(nav.getData())>=1) { //if value is larger
+                if (nav.getRight() == null) {
+                    nav.setRight(new TreeNode<>(value));
+                    return true;
+                } else
+                    nav = nav.getRight();
+            } else if(value.compareTo(nav.getData())<=-1) { //if value is smaller
+                if (nav.getLeft() == null) {
+                    nav.setLeft(new TreeNode<>(value));
+                    return true;
+                } else
+                    nav = nav.getLeft();
+            }
+        }
     }
     public boolean add(E value) {
        return insert(value); //same as insert
@@ -75,13 +96,13 @@ public class BinaryTree<E extends Comparable> {
         System.out.println("What kind of print? 1. Preorder, 2. Inorder, 3. Postorder.");
         switch (printChoice.nextInt()) {
             case 1:
-                System.out.println(preOrder());
+                preOrder(root);
                 break;
             case 2:
-                System.out.println(inOrder());
+                inOrder();
                 break;
             case 3:
-                System.out.println(postOrder());
+                postOrder();
                 break;
             default:
                 System.out.println("Invalid choice, not printing.");

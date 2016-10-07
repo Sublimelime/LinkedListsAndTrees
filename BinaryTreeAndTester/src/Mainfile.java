@@ -13,7 +13,7 @@ public class Mainfile {
     public static void main(String[] args) {
         Scanner keyboard = new Scanner(System.in);
 
-        BinaryTree<String> mTree = new BinaryTree<>();
+        BinaryTree<Integer> mTree = new BinaryTree<>();
 
         do {
             System.out.print("\n-Menu-\n");
