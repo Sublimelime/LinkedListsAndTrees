@@ -33,11 +33,11 @@ public class BinaryTree<E extends Comparable> {
      * Recursively goes through the tree, printing it in in-order format.
      * @param t initial value to start from.
      */
-    public void inOrder(TreeNode<E> t) { //todo -write
+    public void inOrder(TreeNode<E> t) { //todo -verify
         if (t == null)
             return;
-        System.out.println(t.toString());
         inOrder(t.getLeft());
+        System.out.println(t.toString());
         inOrder(t.getRight());
     }
 
@@ -48,9 +48,9 @@ public class BinaryTree<E extends Comparable> {
     public void postOrder(TreeNode<E> t) { //todo -write
         if (t == null)
             return;
-        System.out.println(t.toString());
         postOrder(t.getLeft());
         postOrder(t.getRight());
+        System.out.println(t.toString());
     }
 
     public E minValue() {
