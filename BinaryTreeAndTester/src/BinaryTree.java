@@ -19,6 +19,7 @@ public class BinaryTree<E extends Comparable> {
 
     /**
      * Recursively goes through the tree, printing it in pre-order format.
+     *
      * @param t initial value to start from.
      */
     public void preOrder(TreeNode<E> t) { //todo -verify
@@ -28,9 +29,10 @@ public class BinaryTree<E extends Comparable> {
         preOrder(t.getLeft());
         preOrder(t.getRight());
     }
-    
+
     /**
      * Recursively goes through the tree, printing it in in-order format.
+     *
      * @param t initial value to start from.
      */
     public void inOrder(TreeNode<E> t) { //todo -verify
@@ -43,6 +45,7 @@ public class BinaryTree<E extends Comparable> {
 
     /**
      * Recursively goes through the tree, printing it in post-order format.
+     *
      * @param t initial value to start from.
      */
     public void postOrder(TreeNode<E> t) { //todo -verify
@@ -74,7 +77,8 @@ public class BinaryTree<E extends Comparable> {
         return sizeInternal(root);
     }
 
-    int finalSize =0;
+    int finalSize = 0;
+
     public int sizeInternal(TreeNode<E> t) {
         if (t == null)
             return 0;
@@ -88,8 +92,22 @@ public class BinaryTree<E extends Comparable> {
         return root == null;
     }
 
-    public boolean contains(E value) { //todo -write
-        return false;
+    public boolean contains(E value) {
+        if (root==null) //auto return false if root itself doesn't exist
+            return false;
+
+        TreeNode<E> nav = root; //start at root
+        while (true) {
+            if (value.compareTo(nav.getData()) == 0) { //if value is same, aka a match
+                return true;
+            } else if (value.compareTo(nav.getData()) >= 1) { //if value is larger
+                if(nav.getRight() != null) nav = nav.getRight(); //move right if possible
+                else return false;
+            } else { //if value is smaller
+                if(nav.getLeft() != null)nav = nav.getLeft(); //move left if possible
+                else return false;
+            }
+        }
     }
 
     /**
