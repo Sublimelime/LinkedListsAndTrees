@@ -73,7 +73,11 @@ public class BinaryTree<E extends Comparable> {
      * @return Largest value in tree
      */
     public E maxValue() {
-        return null;
+        TreeNode<E> nav = root; //start at root
+        while (nav.getRight()!=null) {
+            nav = nav.getRight();
+        }
+        return nav.getData();
     }
 
     /**
