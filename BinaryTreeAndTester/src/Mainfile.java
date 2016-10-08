@@ -55,10 +55,13 @@ public class Mainfile {
                         System.out.println("Not found, can be added.");
                     break;
                 case 7: //minimum val
+                    System.out.println("The minimum value is "+mTree.minValue());
                     break;
                 case 8:  //max val
+                    System.out.println("The max value is: "+mTree.maxValue());
                     break;
                 case 9: //max depth
+                    System.out.println("The max depth is "+mTree.maxDepth());
                     break;
                 default:
                     System.err.println("Invalid choice.");

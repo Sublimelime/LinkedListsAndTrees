@@ -56,14 +56,30 @@ public class BinaryTree<E extends Comparable> {
         System.out.println(t.toString());
     }
 
+    /**
+     * Get the smallest value in the tree.
+     * @return Smallest value in tree
+     */
     public E minValue() {
-        return null;
+        TreeNode<E> nav = root; //start at root
+        while (nav.getLeft()!=null) {
+            nav = nav.getLeft();
+        }
+        return nav.getData();
     }
 
+    /**
+     * Gets the largest value in the tree
+     * @return Largest value in tree
+     */
     public E maxValue() {
         return null;
     }
 
+    /**
+     * Gets the deepest element in the tree
+     * @return Deepest element in the tree (Node with most ancestors)
+     */
     public int maxDepth() {
         return 0;
     }
@@ -78,7 +94,6 @@ public class BinaryTree<E extends Comparable> {
     }
 
     int finalSize = 0;
-
     public int sizeInternal(TreeNode<E> t) {
         if (t == null)
             return 0;
@@ -116,7 +131,7 @@ public class BinaryTree<E extends Comparable> {
      * @param value The value to attempt adding
      * @return Success of add, fails if already in tree.
      */
-    public boolean insert(E value) { //todo -test
+    public boolean insert(E value) {
         if (contains(value)) { //if tree already contains value
             return false;
         }
@@ -146,7 +161,7 @@ public class BinaryTree<E extends Comparable> {
         return insert(value); //same as insert
     }
 
-    public boolean remove(E value) {
+    public boolean remove(E value) { //todo -write
         return false;
     }
 
