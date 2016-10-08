@@ -45,7 +45,7 @@ public class BinaryTree<E extends Comparable> {
      * Recursively goes through the tree, printing it in post-order format.
      * @param t initial value to start from.
      */
-    public void postOrder(TreeNode<E> t) { //todo -write
+    public void postOrder(TreeNode<E> t) { //todo -verify
         if (t == null)
             return;
         postOrder(t.getLeft());
@@ -70,7 +70,18 @@ public class BinaryTree<E extends Comparable> {
     }
 
     public int size() {
-        return 0;
+        finalSize = 0;
+        return sizeInternal(root);
+    }
+
+    int finalSize =0;
+    public int sizeInternal(TreeNode<E> t) {
+        if (t == null)
+            return 0;
+        finalSize++;
+        sizeInternal(t.getLeft());
+        sizeInternal(t.getRight());
+        return finalSize;
     }
 
     public boolean empty() {
