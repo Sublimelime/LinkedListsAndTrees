@@ -32,13 +32,13 @@ public class Mainfile {
                     mTree.printSubMenu();
                     break;
                 case 2: //size
-                    System.out.println("The size of the tree is "+mTree.size());
+                    System.out.println("The size of the tree is " + mTree.size());
                     break;
                 case 3: //clear
                     mTree.clear();
                     break;
                 case 4: //empty
-                    System.out.println((mTree.empty()) ? "Tree is empty.":"Tree is not empty.");
+                    System.out.println((mTree.empty()) ? "Tree is empty." : "Tree is not empty.");
                     break;
                 case 5: //insert
                     System.out.println("What should be inserted?");
@@ -49,25 +49,31 @@ public class Mainfile {
                     break;
                 case 6: //contains
                     System.out.println("Check for what?");
-                    if(mTree.contains(keyboard.nextInt()))
+                    if (mTree.contains(keyboard.nextInt()))
                         System.out.println("Already in the table.");
                     else
                         System.out.println("Not found, can be added.");
                     break;
                 case 7: //minimum val
-                    System.out.println("The minimum value is "+mTree.minValue());
+                    System.out.println("The minimum value is " + mTree.minValue());
                     break;
                 case 8:  //max val
-                    System.out.println("The max value is: "+mTree.maxValue());
+                    System.out.println("The max value is: " + mTree.maxValue());
                     break;
                 case 9: //max depth
-                    System.out.println("The max depth is "+mTree.maxDepth());
+                    System.out.println("The max depth is " + mTree.maxDepth());
                     break;
+                case 10: //remove
+                    System.out.println("What value should be removed?");
+                    if (mTree.remove(keyboard.nextInt()))
+                        System.out.println("Successfully removed.");
+                    else
+                        System.out.println("Could not remove that value.");
                 default:
                     System.err.println("Invalid choice.");
                     break;
             }
-        }while (true);
+        } while (true);
 
     }
 
