@@ -82,32 +82,34 @@ public class BinaryTree<E extends Comparable> {
         return nav.getData();
     }
 
+
     /**
      * Gets the deepest element in the tree
      *
      * @return Deepest element in the tree (Node with most ancestors)
      */
-    public int maxDepth() { //todo -help
-        return 0;
+    public int maxDepth() { //todo -test
+        int l,r;
+        if (root == null)
+                return 0;
+        else {
+            l = helperMD(root.getLeft(), 1);
+            r = helperMD(root.getRight(), 1);
+        }
+        if (l>r) return l;
+        else return r;
     }
 
-    /*int leftDepth = 0;
-    public int getLeftDepth(TreeNode<E> t) {
+    public int helperMD(TreeNode<E> t,int depth) {
+        int l,r;
         if (t == null)
-            return 0;
-        leftDepth++;
-        sizeInternal(t.getLeft());
-        return leftDepth;
+            return depth;
+
+        l = helperMD(t.getLeft(),depth+1);
+        r = helperMD(t.getRight(),depth+1);
+        if (l>r) return l;
+        else return r;
     }
-    int rightDepth = 0;
-    public int getRightDepth(TreeNode<E> t) {
-        if (t == null)
-            return 0;
-        rightDepth++;
-        sizeInternal(t.getRight());
-        return rightDepth;
-    }
-    */
 
     public void clear() {
         root = null;
