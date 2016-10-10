@@ -189,8 +189,12 @@ public class BinaryTree<E extends Comparable> {
         return insert(value); //same as insert
     }
 
+    public boolean remove(E value) {
+        return false;
+    }
+
     @SuppressWarnings("UnusedAssignment")
-    public boolean remove(E value) { //todo -write, clarify (Remove when two children are present)
+    public E removeHelper(E value) { //todo -write, clarify (Remove when two children are present)
         if (root == null) //auto return false if root itself doesn't exist
             return false;
 
