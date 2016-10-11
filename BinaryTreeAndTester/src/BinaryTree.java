@@ -89,25 +89,25 @@ public class BinaryTree<E extends Comparable> {
      * @return Deepest element in the tree (Node with most ancestors)
      */
     public int maxDepth() { //todo -test
-        int l,r;
+        int l, r;
         if (root == null)
-                return 0;
+            return 0;
         else {
             l = helperMD(root.getLeft(), 1);
             r = helperMD(root.getRight(), 1);
         }
-        if (l>r) return l;
+        if (l > r) return l;
         else return r;
     }
 
-    public int helperMD(TreeNode<E> t,int depth) {
-        int l,r;
+    public int helperMD(TreeNode<E> t, int depth) {
+        int l, r;
         if (t == null)
             return depth;
 
-        l = helperMD(t.getLeft(),depth+1);
-        r = helperMD(t.getRight(),depth+1);
-        if (l>r) return l;
+        l = helperMD(t.getLeft(), depth + 1);
+        r = helperMD(t.getRight(), depth + 1);
+        if (l > r) return l;
         else return r;
     }
 
@@ -190,52 +190,32 @@ public class BinaryTree<E extends Comparable> {
     }
 
     public boolean remove(E value) {
-        return false;
+        if (!contains(value)) {
+            return false;
+        }
+        removeHelper(root, value);
+        return true;
     }
 
     @SuppressWarnings("UnusedAssignment")
-    public E removeHelper(E value) { //todo -write, clarify (Remove when two children are present)
-        if (root == null) //auto return false if root itself doesn't exist
-            return false;
+    public void removeHelper(TreeNode<E> node, E value) { //todo -help, write
 
-        boolean found = false;
+        if (node.getRight().equals(value)) {
+            if (node.getRight().getLeft() == null && node.getRight().getRight() == null) //no children
+                node.setRight(null);
+            else if (node.getRight().getLeft() != null && node.getRight().getRight() == null) { //left child
+                node.setRight(node.getRight().getLeft());
+            } else if (node.getRight().getLeft() == null && node.getRight().getRight() != null) { //right child
+                node.setRight(node.getRight().getRight());
+            } else if(node.getRight().getLeft() != null && node.getRight().getRight() != null) { //two children
+                
 
-        //find the node that is to be removed
-        TreeNode<E> nav = root; //start at root
-        TreeNode<E> nodeToRemove = null;
-        while (true) {
-            if (value.compareTo(nav.getData()) == 0) { //if value is same, aka a match
-                nodeToRemove = nav;
-                found = true;
-                break;
-            } else if (value.compareTo(nav.getData()) >= 1) { //if value is larger
-                if (nav.getRight() != null) nav = nav.getRight(); //move right if possible
-                else break;
-            } else { //if value is smaller
-                if (nav.getLeft() != null) nav = nav.getLeft(); //move left if possible
-                else break;
+
+
             }
         }
-        if (!found) //if the node wasn't in the tree
-            return false;
 
-        if (nodeToRemove.getRight() == null && nodeToRemove.getLeft() == null) { //if no children, just wipe node
-            nodeToRemove = null;
-            return true;
-        } else if (nodeToRemove.getRight() != null ^ nodeToRemove.getLeft() != null) { //holy cow, I actually used the XOR operator!
-            //if only one child
-            if (nodeToRemove.getLeft() == null) { //find out which one is not null, replace node with it
-                nodeToRemove = nodeToRemove.getRight();
-                return true;
-            } else {
-                nodeToRemove = nodeToRemove.getLeft();
-                return true;
-            }
-        } else if (nodeToRemove.getRight() != null && nodeToRemove.getLeft() != null) {
-            //todo swap value with (Smallest/deepest?) right descendant and remove value from new loc
-            return true;
-        }
-        return false;
+
     }
 
 
