@@ -61,8 +61,7 @@ public class BinaryTree<E extends Comparable> {
      *
      * @return Smallest value in tree
      */
-    public E minValue() {
-        TreeNode<E> nav = root; //start at root
+    public E minValue(TreeNode<E> nav) {
         while (nav.getLeft() != null) {
             nav = nav.getLeft();
         }
@@ -197,8 +196,12 @@ public class BinaryTree<E extends Comparable> {
         return true;
     }
 
+    public TreeNode<E> getRoot() {
+        return root;
+    }
+
     @SuppressWarnings("UnusedAssignment")
-    public void removeHelper(TreeNode<E> node, E value) { //todo -help, write
+    public void removeHelper(TreeNode<E> node, E value) { //todo -help, write, verify first part
 
         if (node.getRight().equals(value)) {
             if (node.getRight().getLeft() == null && node.getRight().getRight() == null) //no children
@@ -207,11 +210,22 @@ public class BinaryTree<E extends Comparable> {
                 node.setRight(node.getRight().getLeft());
             } else if (node.getRight().getLeft() == null && node.getRight().getRight() != null) { //right child
                 node.setRight(node.getRight().getRight());
-            } else if(node.getRight().getLeft() != null && node.getRight().getRight() != null) { //two children
-                
-
-
-
+            } else if (node.getRight().getLeft() != null && node.getRight().getRight() != null) { //two children
+                E v = minValue(node.getRight().getRight());
+                removeHelper(node.getRight(), v);
+                node.getRight().setData(v);
+            }
+        } else if (node.getLeft().equals(value)) {
+            if (node.getLeft().getLeft() == null && node.getLeft().getRight() == null) //no children
+                node.setLeft(null);
+            else if (node.getLeft().getLeft() != null && node.getLeft().getRight() == null) { //left child
+                node.setRight(node.getLeft().getLeft());
+            } else if (node.getLeft().getLeft() == null && node.getLeft().getRight() != null) { //right child
+                node.setRight(node.getLeft().getRight());
+            } else if (node.getLeft().getLeft() != null && node.getLeft().getRight() != null) { //two children
+                E v = minValue(node.getLeft().getRight());
+                removeHelper(node.getLeft(), v);
+                node.getLeft().setData(v);
             }
         }
 

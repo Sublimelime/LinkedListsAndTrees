@@ -55,7 +55,7 @@ public class Mainfile {
                         System.out.println("Not found, can be added.");
                     break;
                 case 7: //minimum val
-                    System.out.println("The minimum value is " + mTree.minValue());
+                    System.out.println("The minimum value is " + mTree.minValue(mTree.getRoot()));
                     break;
                 case 8:  //max val
                     System.out.println("The max value is: " + mTree.maxValue());
