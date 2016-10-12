@@ -20,7 +20,7 @@ public class Mainfile {
 
             System.out.println("1. Print\n" +
                     "2. Size\n" + "3. Clear\n" + "4. Empty\n" + "5. Insert\n" + "6. Contains\n" + "7. Minimum Val\n" +
-                    "8. Max val\n" + "9. Max depth\n" + "0. Exit");
+                    "8. Max val\n" + "9. Max depth\n" + "10. Remove\n" + "0. Exit");
 
             byte choice = keyboard.nextByte();
 
@@ -69,6 +69,28 @@ public class Mainfile {
                         System.out.println("Successfully removed.");
                     else
                         System.out.println("Could not remove that value.");
+                    break;
+                case 11:
+                    System.out.println("Setting up tree for debugging...");
+
+                    mTree.insert(8);
+                    mTree.insert(3);
+                    mTree.insert(10);
+                    mTree.insert(1);
+                    mTree.insert(6);
+                    mTree.insert(14);
+                    mTree.insert(4);
+                    mTree.insert(7);
+                    mTree.insert(13);
+
+                    System.out.println("Preorder------");
+                    mTree.preOrder(mTree.getRoot());
+                    System.out.println("Inorder--------");
+                    mTree.inOrder(mTree.getRoot());
+                    System.out.println("Postorder-------");
+                    mTree.postOrder(mTree.getRoot());
+                    System.out.println("Finished.");
+                    break;
                 default:
                     System.err.println("Invalid choice.");
                     break;

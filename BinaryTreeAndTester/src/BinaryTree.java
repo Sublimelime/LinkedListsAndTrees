@@ -136,6 +136,7 @@ public class BinaryTree<E extends Comparable> {
 
     /**
      * Find if a value is in the tree.
+     *
      * @param value value to check for
      * @return true if value is in the tree.
      */
@@ -195,6 +196,7 @@ public class BinaryTree<E extends Comparable> {
 
     /**
      * Removes a value from the tree.
+     *
      * @param value the value to remove
      * @return Success of removal.
      */
@@ -202,7 +204,10 @@ public class BinaryTree<E extends Comparable> {
         if (!contains(value)) {
             return false;
         }
-        removeHelper(root, value);
+        if (value.equals(root.getData())) {
+
+        } else
+            removeHelper(root, value);
         return true;
     }
 
@@ -213,13 +218,13 @@ public class BinaryTree<E extends Comparable> {
 
     /**
      * Assists remove with removing values from the tree.
-     * @param node node to start at.
+     *
+     * @param node  node to start at.
      * @param value value to remove.
      */
     @SuppressWarnings("UnusedAssignment")
     public void removeHelper(TreeNode<E> node, E value) { //todo -help, write, verify first part
-
-        if (node.getRight().equals(value)) {
+        if (node.getRight().getData().equals(value)) {
             if (node.getRight().getLeft() == null && node.getRight().getRight() == null) //no children
                 node.setRight(null);
             else if (node.getRight().getLeft() != null && node.getRight().getRight() == null) { //left child
@@ -228,10 +233,10 @@ public class BinaryTree<E extends Comparable> {
                 node.setRight(node.getRight().getRight());
             } else if (node.getRight().getLeft() != null && node.getRight().getRight() != null) { //two children
                 E v = minValue(node.getRight().getRight());
-                removeHelper(node.getRight(), v);
+                removeHelper(node.getRight().getRight(), v);
                 node.getRight().setData(v);
             }
-        } else if (node.getLeft().equals(value)) {
+        } else if (node.getLeft().getData().equals(value)) {
             if (node.getLeft().getLeft() == null && node.getLeft().getRight() == null) //no children
                 node.setLeft(null);
             else if (node.getLeft().getLeft() != null && node.getLeft().getRight() == null) { //left child
@@ -240,7 +245,7 @@ public class BinaryTree<E extends Comparable> {
                 node.setRight(node.getLeft().getRight());
             } else if (node.getLeft().getLeft() != null && node.getLeft().getRight() != null) { //two children
                 E v = minValue(node.getLeft().getRight());
-                removeHelper(node.getLeft(), v);
+                removeHelper(node.getLeft().getRight(), v);
                 node.getLeft().setData(v);
             }
         }
