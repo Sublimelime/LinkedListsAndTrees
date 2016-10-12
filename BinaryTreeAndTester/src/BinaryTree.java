@@ -134,6 +134,11 @@ public class BinaryTree<E extends Comparable> {
         return root == null;
     }
 
+    /**
+     * Find if a value is in the tree.
+     * @param value value to check for
+     * @return true if value is in the tree.
+     */
     public boolean contains(E value) {
         if (root == null) //auto return false if root itself doesn't exist
             return false;
@@ -188,6 +193,11 @@ public class BinaryTree<E extends Comparable> {
         return insert(value); //same as insert
     }
 
+    /**
+     * Removes a value from the tree.
+     * @param value the value to remove
+     * @return Success of removal.
+     */
     public boolean remove(E value) {
         if (!contains(value)) {
             return false;
@@ -200,6 +210,12 @@ public class BinaryTree<E extends Comparable> {
         return root;
     }
 
+
+    /**
+     * Assists remove with removing values from the tree.
+     * @param node node to start at.
+     * @param value value to remove.
+     */
     @SuppressWarnings("UnusedAssignment")
     public void removeHelper(TreeNode<E> node, E value) { //todo -help, write, verify first part
 
@@ -228,10 +244,7 @@ public class BinaryTree<E extends Comparable> {
                 node.getLeft().setData(v);
             }
         }
-
-
     }
-
 
     /**
      * Prints a menu of print choices.
