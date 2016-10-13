@@ -73,15 +73,22 @@ public class Mainfile {
                 case 11:
                     System.out.println("Setting up tree for debugging...");
 
-                    mTree.insert(8);
-                    mTree.insert(3);
+                    mTree.insert(30);
                     mTree.insert(10);
-                    mTree.insert(1);
-                    mTree.insert(6);
-                    mTree.insert(14);
-                    mTree.insert(4);
-                    mTree.insert(7);
+                    mTree.insert(40);
+                    mTree.insert(9);
+                    mTree.insert(15);
+                    mTree.insert(39);
+                    mTree.insert(41);
+                    mTree.insert(8);
                     mTree.insert(13);
+                    mTree.insert(45);
+                    mTree.insert(11);
+                    mTree.insert(14);
+                    mTree.insert(7);
+                    mTree.insert(35);
+                    mTree.insert(36);
+                    mTree.insert(43);
 
                     System.out.println("Preorder------");
                     mTree.preOrder(mTree.getRoot());

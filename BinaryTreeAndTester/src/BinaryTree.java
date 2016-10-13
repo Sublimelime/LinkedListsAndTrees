@@ -119,7 +119,7 @@ public class BinaryTree<E extends Comparable> {
         return sizeInternal(root);
     }
 
-    int finalSize = 0;
+    private int finalSize = 0;
 
     public int sizeInternal(TreeNode<E> t) {
         if (t == null)
@@ -200,14 +200,30 @@ public class BinaryTree<E extends Comparable> {
      * @param value the value to remove
      * @return Success of removal.
      */
-    public boolean remove(E value) {
-        if (!contains(value)) {
+    public boolean remove(E value) { //todo -test root removal
+        if (!contains(value)) { //if value is not in tree, cannot remove
             return false;
         }
         if (value.equals(root.getData())) {
-
-        } else
+            System.out.println("Trying to remove root.");
+            if (root.getLeft() == null && root.getRight() == null) { //no children
+                root = null; //nullify root
+                return true;
+            } else if (root.getLeft() != null && root.getRight() == null) { //left child
+                root = root.getLeft(); //set root to it's left
+                return true;
+            } else if (root.getLeft() == null && root.getRight() != null) { //right child
+                root = root.getRight(); //set root to it's right
+                return true;
+            } else if (root.getRight().getLeft() != null && root.getRight().getRight() != null) { //two children
+                E v = minValue(root.getRight());
+                removeHelper(root.getRight(), v);
+                root.setData(v);
+            }
+        } else {
+            System.out.println("Removing a value that is not root.");
             removeHelper(root, value);
+        }
         return true;
     }
 
@@ -223,31 +239,47 @@ public class BinaryTree<E extends Comparable> {
      * @param value value to remove.
      */
     @SuppressWarnings("UnusedAssignment")
-    public void removeHelper(TreeNode<E> node, E value) { //todo -help, write, verify first part
-        if (node.getRight().getData().equals(value)) {
-            if (node.getRight().getLeft() == null && node.getRight().getRight() == null) //no children
-                node.setRight(null);
-            else if (node.getRight().getLeft() != null && node.getRight().getRight() == null) { //left child
-                node.setRight(node.getRight().getLeft());
-            } else if (node.getRight().getLeft() == null && node.getRight().getRight() != null) { //right child
-                node.setRight(node.getRight().getRight());
-            } else if (node.getRight().getLeft() != null && node.getRight().getRight() != null) { //two children
-                E v = minValue(node.getRight().getRight());
-                removeHelper(node.getRight().getRight(), v);
-                node.getRight().setData(v);
-            }
-        } else if (node.getLeft().getData().equals(value)) {
-            if (node.getLeft().getLeft() == null && node.getLeft().getRight() == null) //no children
-                node.setLeft(null);
-            else if (node.getLeft().getLeft() != null && node.getLeft().getRight() == null) { //left child
-                node.setRight(node.getLeft().getLeft());
-            } else if (node.getLeft().getLeft() == null && node.getLeft().getRight() != null) { //right child
-                node.setRight(node.getLeft().getRight());
-            } else if (node.getLeft().getLeft() != null && node.getLeft().getRight() != null) { //two children
-                E v = minValue(node.getLeft().getRight());
-                removeHelper(node.getLeft().getRight(), v);
-                node.getLeft().setData(v);
-            }
+    public void removeHelper(TreeNode<E> node, E value) { //todo -test
+        System.out.println("Node is currently: " + node);
+        if (value.compareTo(node.getData()) < 0) {
+            System.out.println("left");
+            if (node.getLeft().getData().equals(value)) {
+                System.out.println("Travelling left, node.left is " + node.getLeft());
+                if (node.getLeft().getLeft() == null && node.getLeft().getRight() == null) //no children
+                    node.setLeft(null);
+                else if (node.getLeft().getLeft() != null && node.getLeft().getRight() == null) { //left child
+                    node.setRight(node.getLeft().getLeft());
+                } else if (node.getLeft().getLeft() == null && node.getLeft().getRight() != null) { //right child
+                    node.setRight(node.getLeft().getRight());
+                } else if (node.getLeft().getLeft() != null && node.getLeft().getRight() != null) { //two children
+                    E v = minValue(node.getLeft().getRight());
+                    System.out.println("Calling remove helper with values " + node.getLeft().getRight() + " and " + v);
+                    removeHelper(node.getLeft().getRight(), v);
+                    System.out.println("After calling remove helper on node.left.right, v is " + v);
+                    node.getLeft().setData(v);
+                }
+            } else
+                removeHelper(node.getLeft(), value);
+        } else {
+            System.out.println("right");
+
+            if (node.getRight().getData().equals(value)) {
+                System.out.println("Travelling right, node.right is " + node.getRight());
+                if (node.getRight().getLeft() == null && node.getRight().getRight() == null) //no children
+                    node.setRight(null);
+                else if (node.getRight().getLeft() != null && node.getRight().getRight() == null) { //left child
+                    node.setRight(node.getRight().getLeft());
+                } else if (node.getRight().getLeft() == null && node.getRight().getRight() != null) { //right child
+                    node.setRight(node.getRight().getRight());
+                } else if (node.getRight().getLeft() != null && node.getRight().getRight() != null) { //two children
+                    E v = minValue(node.getRight().getRight());
+                    System.out.println("Calling remove helper with values " + node.getRight().getRight() + " and " + v);
+                    removeHelper(node.getRight().getRight(), v);
+                    System.out.println("After calling remove helper on node.right.right, v is " + v);
+                    node.getRight().setData(v);
+                }
+            } else
+                removeHelper(node.getRight(), value);
         }
     }
 
