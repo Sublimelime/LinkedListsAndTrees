@@ -22,7 +22,7 @@ public class BinaryTree<E extends Comparable> {
      *
      * @param t initial value to start from.
      */
-    public void preOrder(TreeNode<E> t) { //todo -verify
+    public void preOrder(TreeNode<E> t) {
         if (t == null)
             return;
         System.out.println(t.toString());
@@ -35,7 +35,7 @@ public class BinaryTree<E extends Comparable> {
      *
      * @param t initial value to start from.
      */
-    public void inOrder(TreeNode<E> t) { //todo -verify
+    public void inOrder(TreeNode<E> t) {
         if (t == null)
             return;
         inOrder(t.getLeft());
@@ -48,7 +48,7 @@ public class BinaryTree<E extends Comparable> {
      *
      * @param t initial value to start from.
      */
-    public void postOrder(TreeNode<E> t) { //todo -verify
+    public void postOrder(TreeNode<E> t) {
         if (t == null)
             return;
         postOrder(t.getLeft());
@@ -87,7 +87,7 @@ public class BinaryTree<E extends Comparable> {
      *
      * @return Deepest element in the tree (Node with most ancestors)
      */
-    public int maxDepth() { //todo -test
+    public int maxDepth() {
         int l, r;
         if (root == null)
             return 0;
@@ -188,10 +188,6 @@ public class BinaryTree<E extends Comparable> {
                     nav = nav.getLeft();
             }
         }
-    }
-
-    public boolean add(E value) {
-        return insert(value); //same as insert
     }
 
     /**
