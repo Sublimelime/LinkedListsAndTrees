@@ -90,12 +90,12 @@ public class Mainfile {
                     mTree.insert(36);
                     mTree.insert(43);
 
-                    System.out.println("Preorder------");
+                    /*System.out.println("Preorder------");
                     mTree.preOrder(mTree.getRoot());
                     System.out.println("Inorder--------");
                     mTree.inOrder(mTree.getRoot());
                     System.out.println("Postorder-------");
-                    mTree.postOrder(mTree.getRoot());
+                    mTree.postOrder(mTree.getRoot());*/
                     System.out.println("Finished.");
                     break;
                 default:

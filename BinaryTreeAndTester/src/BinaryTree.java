@@ -200,10 +200,9 @@ public class BinaryTree<E extends Comparable> {
      * @param value the value to remove
      * @return Success of removal.
      */
-    public boolean remove(E value) { //todo -test root removal
-        if (!contains(value)) { //if value is not in tree, cannot remove
+    public boolean remove(E value) {
+        if (!contains(value))  //if value is not in tree, cannot remove
             return false;
-        }
         if (value.equals(root.getData())) {
             System.out.println("Trying to remove root.");
             if (root.getLeft() == null && root.getRight() == null) { //no children
@@ -215,9 +214,9 @@ public class BinaryTree<E extends Comparable> {
             } else if (root.getLeft() == null && root.getRight() != null) { //right child
                 root = root.getRight(); //set root to it's right
                 return true;
-            } else if (root.getRight().getLeft() != null && root.getRight().getRight() != null) { //two children
+            } else if (root.getRight() != null && root.getLeft() != null) { //two children
                 E v = minValue(root.getRight());
-                removeHelper(root.getRight(), v);
+                removeHelper(root, v);
                 root.setData(v);
             }
         } else {
@@ -231,7 +230,6 @@ public class BinaryTree<E extends Comparable> {
         return root;
     }
 
-
     /**
      * Assists remove with removing values from the tree.
      *
@@ -239,23 +237,22 @@ public class BinaryTree<E extends Comparable> {
      * @param value value to remove.
      */
     @SuppressWarnings("UnusedAssignment")
-    public void removeHelper(TreeNode<E> node, E value) { //todo -test
-        System.out.println("Node is currently: " + node);
+    public void removeHelper(TreeNode<E> node, E value) {
+        //System.out.println("Node is currently: " + node);
+        //System.out.println("Value is currently: " + value);
         if (value.compareTo(node.getData()) < 0) {
             System.out.println("left");
             if (node.getLeft().getData().equals(value)) {
-                System.out.println("Travelling left, node.left is " + node.getLeft());
+                //System.out.println("Travelling left, node.left is " + node.getLeft());
                 if (node.getLeft().getLeft() == null && node.getLeft().getRight() == null) //no children
                     node.setLeft(null);
                 else if (node.getLeft().getLeft() != null && node.getLeft().getRight() == null) { //left child
-                    node.setRight(node.getLeft().getLeft());
+                    node.setLeft(node.getLeft().getLeft());
                 } else if (node.getLeft().getLeft() == null && node.getLeft().getRight() != null) { //right child
-                    node.setRight(node.getLeft().getRight());
+                    node.setLeft(node.getLeft().getRight());
                 } else if (node.getLeft().getLeft() != null && node.getLeft().getRight() != null) { //two children
                     E v = minValue(node.getLeft().getRight());
-                    System.out.println("Calling remove helper with values " + node.getLeft().getRight() + " and " + v);
-                    removeHelper(node.getLeft().getRight(), v);
-                    System.out.println("After calling remove helper on node.left.right, v is " + v);
+                    removeHelper(node.getLeft(), v);
                     node.getLeft().setData(v);
                 }
             } else
@@ -264,7 +261,7 @@ public class BinaryTree<E extends Comparable> {
             System.out.println("right");
 
             if (node.getRight().getData().equals(value)) {
-                System.out.println("Travelling right, node.right is " + node.getRight());
+                //System.out.println("Travelling right, node.right is " + node.getRight());
                 if (node.getRight().getLeft() == null && node.getRight().getRight() == null) //no children
                     node.setRight(null);
                 else if (node.getRight().getLeft() != null && node.getRight().getRight() == null) { //left child
@@ -273,9 +270,8 @@ public class BinaryTree<E extends Comparable> {
                     node.setRight(node.getRight().getRight());
                 } else if (node.getRight().getLeft() != null && node.getRight().getRight() != null) { //two children
                     E v = minValue(node.getRight().getRight());
-                    System.out.println("Calling remove helper with values " + node.getRight().getRight() + " and " + v);
-                    removeHelper(node.getRight().getRight(), v);
-                    System.out.println("After calling remove helper on node.right.right, v is " + v);
+                    //System.out.println("Need to remove " + v + " and set my right to it.");
+                    removeHelper(node.getRight(), v);
                     node.getRight().setData(v);
                 }
             } else
